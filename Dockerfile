@@ -1,5 +1,5 @@
 # Build stage
-FROM microsoft/aspnetcore-build:2 AS build-env
+FROM microsoft/aspnetcore-build:2.0.0-preview1 AS build-env
 
 WORKDIR /generator
 
@@ -20,7 +20,7 @@ RUN dotnet test tests/tests.csproj
 RUN dotnet publish api/api.csproj -o /publish
 
 # Runtime stage
-FROM microsoft/aspnetcore:2
+FROM microsoft/aspnetcore:2.0.0-preview1
 COPY --from=build-env /publish /publish
 WORKDIR /publish
 ENTRYPOINT ["dotnet", "api.dll"]
