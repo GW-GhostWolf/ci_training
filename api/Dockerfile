@@ -6,7 +6,7 @@ COPY api.csproj .
 RUN dotnet restore
 
 COPY . .
-RUN dotnet publish -o /publish
+RUN dotnet publish /p:TargetManifestFiles= -o /publish
 
 # Runtime Image Stage
 FROM microsoft/aspnetcore:2
