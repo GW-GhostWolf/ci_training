@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   generator:
-    image: ${GENERATOR_IMAGE}
+    image: ${GENERATOR_IMAGE-192.168.99.100:8090/aspnetcore/generator:ci-11}
     #ports:
     # - "8080:80"
   mail:
@@ -10,7 +10,7 @@ services:
     #ports:
     # - "8025:8025"
   integration:
-    image: ${INTEGRATION_IMAGE}
+    image: ${INTEGRATION_IMAGE-192.168.99.100:8090/aspnetcore/generator:integration-8}
     build: .
     environment:
      - TEAMCITY_PROJECT_NAME
